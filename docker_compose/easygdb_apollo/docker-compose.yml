@@ -19,7 +19,7 @@ services:
       #  - ../data/config:/data/config           # Config
       #  - ../data/annotations:/data/annotations # Annotations
       #  - ../data/users:/data/users # Annotations
-      - ../../WebApollo_data:/data:rw
+      - ../../data:/data:rw
     environment:
       - APOLLO_ADMIN_USERNAME=IHSM_SUB
       - APOLLO_ADMIN_EMAIL=admin@admin.com
