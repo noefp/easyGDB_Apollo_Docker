@@ -1,0 +1,30 @@
+
+services:
+  easy_gdb:
+    container_name: easy_gdb
+    build:
+      context: ../..
+    ports:
+      - "8000:80"
+    volumes:
+      - ../../src:/var/www/html
+     
+  apollo:
+    image: gmod/apollo
+    container_name: WebApollo
+    ports:
+      - "8080:8080"
+    volumes:
+      #  - ../data/genomes:/data/genomes         # Genomes
+      #  - ../data/config:/data/config           # Config
+      #  - ../data/annotations:/data/annotations # Annotations
+      #  - ../data/users:/data/users # Annotations
+      - ../../WebApollo_data:/data:rw
+    environment:
+      - APOLLO_ADMIN_USERNAME=IHSM_SUB
+      - APOLLO_ADMIN_EMAIL=admin@admin.com
+      - APOLLO_ADMIN_PASSWORD=admin
+      - APOLLO_ADMIN_FIRST_NAME=IHSM
+      - APOLLO_ADMIN_LAST_NAME=Subtropicals
+
+    restart: unless-stopped
